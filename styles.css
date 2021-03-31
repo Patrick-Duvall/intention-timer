@@ -1,5 +1,3 @@
-
-
 body {
   background-color: #636363;
   color: white;
@@ -20,25 +18,18 @@ body {
   margin: -10px;
 }
 
-.activity-container h1 {
-  padding-left: 5%;
-  color: darkgray;
-  font-size: 28px;
-  margin: 18px 0 9px 0;
-}
-
-.past-activities-container h1 {
-  padding-left: 30px;
-  color: darkgray;
-  font-size: 28px;
-}
-
-
 .activity-container {
   font-size: large;
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: #1e292a;
+}
+
+.activity-container h1 {
+  padding-left: 5%;
+  color: darkgray;
+  font-size: 28px;
+  margin: 18px 0 9px 0;
 }
 
 .inner-activity-container{
@@ -115,6 +106,12 @@ body {
 .past-activities-container {
   background-color: #1e292a;
   color: darkgray;
+}
+
+.past-activities-container h1 {
+  padding-left: 30px;
+  color: darkgray;
+  font-size: 28px;
 }
 
 .past-activities-container p {
