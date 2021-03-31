@@ -19,9 +19,11 @@
         <div class="centered-div">
           <div class="type-buttons">
             <label for="category" class="button-label">Select a category:</label><br>
-            <button id="study-button"><img class="button-image" src="assets/study.svg"><br>Study</button>
-            <button><img class="button-image" src="assets/crown.svg"><br>Meditate</button>
-            <button><img class="button-image" src="assets/shoe.svg"><br>Exercise</button>
+            <button type="button" id="study-button">
+              <img id="study-image" class="button-image" src="assets/study.svg"><br>Study
+            </button>
+            <button type="button" id="meditate-button"><img class="button-image" src="assets/crown.svg"><br>Meditate</button>
+            <button type="button" id="exercise-button"><img class="button-image" src="assets/shoe.svg"><br>Exercise</button>
           </div>
           <div id="goal-statement">
             <label for="to-accomplish">What would you like to accomplish during this time?</label><br>
@@ -48,7 +50,7 @@
     </div>
   </div>
 
-  <script src="./src/Activity.js"></script>
-  <script src="./src/main.js"></script>
+  <script src="./Activity.js"></script>
+  <script src="./main.js"></script>
 </body>
 </html>

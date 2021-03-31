@@ -117,3 +117,12 @@ body {
 .past-activities-container p {
   text-align: center;
 }
+
+.green {
+  color: rgb(134, 180, 64)!important;;
+  border-color: rgb(134, 180, 64)!important;
+}
+
+.green .button-image {
+  filter: invert(61%) sepia(8%) saturate(3188%) hue-rotate(42deg) brightness(108%) contrast(77%) 
+}
