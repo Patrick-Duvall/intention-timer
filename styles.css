@@ -6,11 +6,8 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.header {
-  text-align: center;
-}
-
 .header h1 {
+  text-align: center;
   padding: 10px 0;
   display: block;
 }
@@ -53,19 +50,16 @@ body {
   align-content: center;
 }
 
+.centered-div {
+  margin: 10px auto 0px;
+  padding: 30px 0;
+  width: 80%;
+}
+
 .button-image {
   height: 16px;
   width: 16px;
   filter: brightness(0) invert(1);
-}
-
-.inner-activity-container label {
-  padding: 0 0 10px 0;
-}
-
-.inner-activity-container input {
-  padding: 28px 0 0 0;
-  font-size: large;
 }
 
 .inner-activity-container  button {
@@ -78,19 +72,19 @@ body {
   border-radius: 3px;
 }
 
-.centered-div {
-  margin: 10px auto 0px;
-  padding: 20px 0;
-  width: 80%;
+#study-button {
+  margin-left: 0;
 }
 
 .inner-activity-container input {
   background-color: #636363;
   border: 0;
+  font-size: large;
+  padding: 28px 0 0 0;
   border-bottom: 1px white solid;
 }
 
-.inline {
+.inline-form-element {
   display: inline-block;
   width: 48%;
   margin: 10% 0 5%;
@@ -100,20 +94,8 @@ body {
   width: 80%;
 }
 
-.type-buttons {
-  padding: 2% 0 0 0;
-}
-
 .goal-statement {
   padding: 10% 0;
-}
-
-label {
-  margin: 0 0 20px 0;
-}
-
-#study-button {
-  margin-left: 0;
 }
 
 #to-accomplish {
@@ -125,10 +107,9 @@ label {
   background-color: white;
   color: black;
   border-radius: 3px;
-  display: block;
   width: 150px;
   float: right;
-  margin: 15% 15% 0 0;
+  margin: 12% 13% 0 0;
 }
 
 .past-activities-container {
