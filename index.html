@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Intention Timer</h1>
+  </div>
+  <div class="main-page">
+    <div class="activity-container">
+      <h1>New Activity</h1>
+      <form class="inner-activity-container">
+        <div class="centered-div">
+          <div class="type-buttons">
+            <label for="category" class="button-label">Select a category:</label><br>
+            <button id="study-button"><img class="button-image" src="assets/study.svg"><br>Study</button>
+            <button><img class="button-image" src="assets/crown.svg"><br>Meditate</button>
+            <button><img class="button-image" src="assets/shoe.svg"><br>Exercise</button>
+          </div>
+          <div id="goal-statement">
+            <label for="to-accomplish">What would you like to accomplish during this time?</label><br>
+            <input type="text" id="to-accomplish">
+          </div>
+          <div class="minutes-seconds">
+            <div class="inline-form-element ">
+              <label for="minutes">Minutes</label><br>
+              <input type="number" id="minutes" class="short-input">
+            </div>
+            <div class="inline-form-element">
+              <label for="seconds">Seconds</label><br>
+              <input type="number" id="seconds" class="short-input">
+            </div>
+            <button id="start"">Start Activity</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="past-activities-container">
+      <h1>Past Activities</h1>
+      <p>You haven't logged and activities yet.</p>
+      <p>Complete the form to the left to get started</p>
+    </div>
+  </div>
+
+  <!-- <script src="./src/main.js"></script> -->
+</body>
+</html>
