@@ -122,7 +122,31 @@ body {
   color: rgb(134, 180, 64)!important;;
   border-color: rgb(134, 180, 64)!important;
 }
-
 .green .button-image {
   filter: invert(61%) sepia(8%) saturate(3188%) hue-rotate(42deg) brightness(108%) contrast(77%) 
 }
+
+.red {
+  color: rgb(180, 101, 64)!important;;
+  border-color: rgb(180, 101, 64)!important;
+}
+.red .button-image {
+  filter: invert(59%) sepia(15%) saturate(5795%) hue-rotate(336deg) brightness(78%) contrast(74%)
+}
+
+.green {
+  color: rgb(134, 180, 64)!important;;
+  border-color: rgb(134, 180, 64)!important;
+}
+.green .button-image {
+  filter: invert(61%) sepia(8%) saturate(3188%) hue-rotate(42deg) brightness(108%) contrast(77%) 
+}
+
+.purple {
+  color: rgb(152, 107, 173)!important;;
+  border-color: rgb(152, 107, 173)!important;
+}
+.purple .button-image {
+  filter: invert(52%) sepia(13%) saturate(1485%) hue-rotate(237deg) brightness(88%) contrast(89%)
+}
+
