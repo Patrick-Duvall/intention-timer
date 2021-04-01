@@ -17,6 +17,9 @@ body {
   height: 92vh;
   margin: -10px;
 }
+.type-buttons {
+  display: flex;
+}
 
 .activity-container {
   font-size: large;
@@ -71,8 +74,13 @@ body {
   background-color: #636363;
   border: 0;
   font-size: large;
+  color: rgb(168, 159, 159);
   padding: 28px 0 0 0;
   border-bottom: 1px white solid;
+}
+
+.error-message {
+  color: red;
 }
 
 .inline-form-element {
