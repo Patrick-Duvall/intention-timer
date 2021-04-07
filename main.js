@@ -42,7 +42,24 @@ submitButton.addEventListener("click", function () {
   if (invalidFields.length > 0) {
     invalidFields[0].focus();
   }
+  debugger
 });
+
+submitButton.addEventListener("click", submitForm)
+
+function submitForm(event){
+  if (!(form.checkValidity() && categorySelected)) {return}
+  debugger
+  event.preventDefault()
+  document.querySelector('#seconds').value
+  document.querySelector('#minutes').value
+  document.querySelector('#to-accomplish').value
+  activityContainer = document.querySelector('.activity-container')
+  currentActivityContainer = document.querySelector('.current-activity-container')
+  activityContainer.classList.add('hidden')
+  currentActivityContainer.classList.remove('hidden')
+  debugger
+}
 
 
 function setFormGreen() {
