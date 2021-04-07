@@ -42,23 +42,40 @@ submitButton.addEventListener("click", function () {
   if (invalidFields.length > 0) {
     invalidFields[0].focus();
   }
-  debugger
+  // debugger
 });
 
 submitButton.addEventListener("click", submitForm)
 
 function submitForm(event){
   if (!(form.checkValidity() && categorySelected)) {return}
-  debugger
+  // debugger
   event.preventDefault()
-  document.querySelector('#seconds').value
-  document.querySelector('#minutes').value
-  document.querySelector('#to-accomplish').value
+  var seconds = document.querySelector('#seconds').value
+  var minutes = document.querySelector('#minutes').value
+  var toAccomplish = document.querySelector('#to-accomplish').value
   activityContainer = document.querySelector('.activity-container')
+  var intention = document.querySelector(".intention")
+  var timeAmount = document.querySelector(".activity-time")
+  intention.innerText = toAccomplish
+  timeAmount.innerText = convertTime(seconds, minutes)
+  
   currentActivityContainer = document.querySelector('.current-activity-container')
   activityContainer.classList.add('hidden')
   currentActivityContainer.classList.remove('hidden')
+}
+
+function convertTime(seconds, minutes) {
   debugger
+  seconds = parseInt(seconds)
+  minutes = parseInt(minutes)
+  var newSeconds = (seconds % 60).toString()
+  newSeconds = newSeconds.length === 1 ? '0' + newSeconds : newSeconds
+  var addMinutes = Math.floor(seconds / 60)
+  var newMinutes = (minutes + addMinutes).toString()
+  newMinutes = newMinutes.length === 1 ? '0' + newMinutes : newMinutes
+  debugger
+  return newMinutes.toString() + ":" + newSeconds.toString()
 }
 
 
