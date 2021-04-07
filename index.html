@@ -18,14 +18,19 @@
       <form class="inner-activity-container">
         <div class="centered-div">
           <label for="category" class="button-label">Select a category:</label><br>
+          <div class='buttons-error-message hidden'>⚠ Please choose a category</div>
           <div class="type-buttons">
-            <button type="radio button" id="study-button">
+            <button type="radio" id="study-button" name="activity-category" required
+            oninvalid="this.setCustomValidity('⚠ Please choose a category')" 
+            oninput="setCustomValidity('')">
               <img id="study-image" class="button-image" src="assets/study.svg"><br>Study
             </button>
-            <button type="radio button" id="meditate-button">
+            <button type="radio" id="meditate-button" name="activity-category" required
+            oninput="setCustomValidity('')">
               <img class="button-image" src="assets/crown.svg"><br>Meditate
             </button>
-            <button type="radio button" id="exercise-button">
+            <button type="radio" id="exercise-button" name="activity-category" required
+            oninput="setCustomValidity('')">
               <img class="button-image" src="assets/shoe.svg"><br>Exercise
             </button>
           </div>
@@ -43,7 +48,6 @@
               oninvalid="setCustomValidity('⚠ Please choose a duration in minutes')"
               oninput="setCustomValidity('')"
               >
-            <div class='error-message'></div>
             </div>
             <div class="inline-form-element">
               <label for="seconds">Seconds</label><br>

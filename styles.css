@@ -4,6 +4,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.hidden {
+  display: none!important;
+}
+
 .header h1 {
   text-align: center;
   padding: 10px 0;
@@ -80,7 +84,6 @@ body {
 }
 
 .error-message {
-  color: ;
   font-size: small;
 }
 

@@ -1,7 +1,10 @@
 var studyButton = document.querySelector("#study-button")
 var meditateButton = document.querySelector("#meditate-button")
 var exerciseButton = document.querySelector("#exercise-button")
+var categorySelected = false
+var pageColor = ''
 var mainPage = document.querySelector('.main-page')
+var buttonsError = document.querySelector('.buttons-error-message')
 
 studyButton.addEventListener("click", setFormGreen)
 meditateButton.addEventListener("click", setFormPurple)
@@ -23,6 +26,10 @@ submitButton.addEventListener("click", function () {
     for (var i = 0; i < errorMessages.length; i++) {
       errorMessages[i].parentNode.removeChild(errorMessages[i]);
     }
+    //Add Button error
+    if (!categorySelected) { buttonsError.classList.remove('hidden') }
+    if (categorySelected) { buttonsError.classList.add('hidden') }
+
     // Add errors
     for (var i = 0; i < invalidFields.length; i++) {
       parent = invalidFields[i].parentNode;
@@ -37,19 +44,26 @@ submitButton.addEventListener("click", function () {
   }
 });
 
+
 function setFormGreen() {
+  categorySelected = 'study'
+  pageColor = 'green'
   mainPage.classList.add("green")
   mainPage.classList.remove("purple")
   mainPage.classList.remove("red")
 }
 
 function setFormPurple() {
+  categorySelected = 'meditate'
+  pageColor = 'purple'
   mainPage.classList.add("purple")
   mainPage.classList.remove("red")
   mainPage.classList.remove("green")
 }
 
 function setFormRed() {
+  categorySelected = 'exercise'
+  pageColor = 'red'
   mainPage.classList.add("red")
   mainPage.classList.remove("green")
   mainPage.classList.remove("purple")
