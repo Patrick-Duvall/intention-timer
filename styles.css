@@ -21,9 +21,8 @@ body {
   height: 92vh;
   margin: -10px;
 }
-.type-buttons {
-  display: flex;
-}
+
+/* NEW activity modal */
 
 .activity-form-modal {
   font-size: large;
@@ -32,28 +31,8 @@ body {
   background-color: #1e292a;
 }
 
-.activity-timer-modal {
-  font-size: large;
-  text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background-color: #1e292a;
-}
-
-.activity-timer-modal h2 {
-margin: 10px 0 0 0;
-}
-
-.activity-timer-modal h1 {
-  padding-left: 5%;
-  color: darkgray;
-  font-size: 28px;
-  margin: 18px 0 0 0;
-}
-
-.activity-timer-modal .activity-time {
-  line-height: 72px;
-  font-size: 96px;
+.type-buttons {
+  display: flex;
 }
 
 .activity-form-modal h1 {
@@ -129,7 +108,7 @@ margin: 10px 0 0 0;
   padding: 10% 0;
 }
 
-#to-accomplish {
+#activity-description {
   width: 87%;
 }
 
@@ -143,12 +122,41 @@ margin: 10px 0 0 0;
   margin: 12% 13% 0 0;
 }
 
+/* Current Activity Modal */
+
+.activity-timer-modal {
+  font-size: large;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #1e292a;
+}
+
+.activity-timer-modal h2 {
+margin: 10px 0 0 0;
+}
+
+.activity-timer-modal h1 {
+  padding-left: 5%;
+  color: darkgray;
+  font-size: 28px;
+  margin: 18px 0 0 0;
+}
+
+.activity-timer-modal .activity-time {
+  line-height: 72px;
+  font-size: 96px;
+}
+
 #start-timer {
   border-radius: 50%;
   height: 250px;
   width: 250px;
+  margin: 10%;
   font-size: x-large;
 }
+
+/* PAST Activities section */
 
 .past-activities-container {
   background-color: #1e292a;
@@ -165,6 +173,7 @@ margin: 10px 0 0 0;
   text-align: center;
 }
 
+/* COLOR LOGIC */
 .green #study-button {
   color: rgb(134, 180, 64)!important;
   border-color: rgb(134, 180, 64)!important;
@@ -181,6 +190,7 @@ margin: 10px 0 0 0;
 .green #start-timer {
   border: solid 5px rgb(134, 180, 64);
 }
+
 
 .red  #exercise-button{
   color: rgb(180, 101, 64)!important;
@@ -199,6 +209,7 @@ margin: 10px 0 0 0;
 .red #start-timer {
   border: solid 5px rgb(180, 101, 64);
 }
+
 
 .purple #meditate-button {
   color: rgb(152, 107, 173)!important;

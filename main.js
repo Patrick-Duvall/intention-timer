@@ -8,43 +8,36 @@ var activityTimerModal = document.querySelector('.activity-timer-modal')
 var activityFormModal = document.querySelector('.activity-form-modal')
 var buttonsError = document.querySelector('.buttons-error-message')
 
-studyButton.addEventListener("click", setFormGreen)
-meditateButton.addEventListener("click", setFormPurple)
-exerciseButton.addEventListener("click", setFormRed)
+studyButton.addEventListener("click", setPageGreen)
+meditateButton.addEventListener("click", setPagePurple)
+exerciseButton.addEventListener("click", setPageRed)
 
 form = document.querySelector(".inner-activity-container")
-form.addEventListener("invalid", function (event) {
-  event.preventDefault();
-  }, true
-)
-
 
 var submitButton = form.querySelector("#start")
-submitButton.addEventListener("click", function () {
+submitButton.addEventListener("click", renderErrorMessages)
+
+function renderErrorMessages() {
   var invalidFields = form.querySelectorAll(":invalid")
   var errorMessages = form.querySelectorAll(".error-message"),
     parent;
-    // Remove any existing messages
-    for (var i = 0; i < errorMessages.length; i++) {
-      errorMessages[i].parentNode.removeChild(errorMessages[i]);
-    }
-    //Add Button error
-    if (!categorySelected) { buttonsError.classList.remove('hidden') }
-    if (categorySelected) { buttonsError.classList.add('hidden') }
+  // Remove any existing messages
+  for (var i = 0; i < errorMessages.length; i++) {
+    errorMessages[i].parentNode.removeChild(errorMessages[i]);
+  }
+  //Add Button error
+  if (!categorySelected) { buttonsError.classList.remove('hidden') }
+  if (categorySelected) { buttonsError.classList.add('hidden') }
 
-    // Add errors
-    for (var i = 0; i < invalidFields.length; i++) {
-      parent = invalidFields[i].parentNode;
-      invalidFields[i].validationMessage = invalidFields[i].oninvalid()
-      parent.insertAdjacentHTML("beforeend", "<div class='error-message'>" +
+  // Add errors
+  for (var i = 0; i < invalidFields.length; i++) {
+    parent = invalidFields[i].parentNode;
+    invalidFields[i].validationMessage = invalidFields[i].oninvalid()
+    parent.insertAdjacentHTML("beforeend", "<div class='error-message'>" +
       invalidFields[i].validationMessage +
       "</div>");
-    }
-  // If there are errors, give focus to the first invalid field
-  if (invalidFields.length > 0) {
-    invalidFields[0].focus();
   }
-});
+}
 
 submitButton.addEventListener("click", submitForm)
 
@@ -56,10 +49,10 @@ function submitForm(event){
 }
 
 function setupActivityTimerModal() {
-  var toAccomplish = document.querySelector('#to-accomplish').value
+  var activityDescription = document.querySelector('#activity-description').value
   var intention = document.querySelector(".intention")
   var timeAmount = document.querySelector(".activity-time")
-  intention.innerText = toAccomplish
+  intention.innerText = activityDescription
   timeAmount.innerText = setTimer()
 }
 
@@ -80,7 +73,7 @@ function showActivityTimerModal() {
 }
 
 
-function setFormGreen(event) {
+function setPageGreen(event) {
   event.preventDefault()
   categorySelected = 'study'
   pageColor = 'green'
@@ -89,7 +82,7 @@ function setFormGreen(event) {
   mainPage.classList.remove("red")
 }
 
-function setFormPurple(event) {
+function setPagePurple(event) {
   event.preventDefault()
   categorySelected = 'meditate'
   pageColor = 'purple'
@@ -98,7 +91,7 @@ function setFormPurple(event) {
   mainPage.classList.remove("green")
 }
 
-function setFormRed(event) {
+function setPageRed(event) {
   event.preventDefault()
   categorySelected = 'exercise'
   pageColor = 'red'
