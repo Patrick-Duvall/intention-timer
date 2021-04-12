@@ -103,6 +103,8 @@ function spinTimer(timer){
 function endTimer(timer){
   timer.classList.remove('spinning-loader')
   timer.innerText = ('COMPLETE!')
+  var logActivityButton = document.querySelector('#log-activity-button')
+  logActivityButton.classList.remove('hidden')
 }
 
 function stringifyTime(minutes, seconds) {
