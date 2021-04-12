@@ -16,7 +16,7 @@ body {
 
 .main-page {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-gap: 3px;
   height: 92vh;
   margin: -10px;
