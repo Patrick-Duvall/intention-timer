@@ -49,8 +49,8 @@ submitButton.addEventListener("click", function () {
 submitButton.addEventListener("click", submitForm)
 
 function submitForm(event){
-  if (!(form.checkValidity() && categorySelected)) {return}
   event.preventDefault()
+  if (!(form.checkValidity() && categorySelected)) {return}
   setupActivityTimerModal()
   showActivityTimerModal()
 }
