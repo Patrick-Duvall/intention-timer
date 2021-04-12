@@ -51,7 +51,7 @@ function submitForm(event){
 function setupActivityTimerModal() {
   var activityDescription = document.querySelector('#activity-description').value
   var intention = document.querySelector(".intention")
-  var timeAmount = document.querySelector(".activity-time")
+  var timeAmount = document.querySelector(".activity-timer")
   intention.innerText = activityDescription
   timeAmount.innerText = setTimer()
 }
@@ -72,6 +72,34 @@ function showActivityTimerModal() {
   activityTimerModal.classList.remove('hidden')
 }
 
+var startTimer = document.querySelector('#start-timer')
+startTimer.addEventListener('click', beginTimer)
+
+function beginTimer(){
+  var time = document.querySelector('.activity-timer').innerText
+  var minutes = parseInt(time.split(':')[0])
+  var seconds = parseInt(time.split(':')[1])
+  var totalSeconds = minutes * 60 + seconds
+  
+  var timer = setInterval(function () {
+    if (minutes === 0 && seconds === 0 ){
+      debugger
+      console.log('done')
+      clearInterval(timer)
+    } else if (seconds > 0) {
+      // debugger
+      totalSeconds -=1
+      seconds -= 1
+      console.log(minutes,seconds);
+    } else {
+      // debugger
+      totalSeconds -= 1
+      minutes -= 1
+      seconds = 59
+      console.log(minutes, seconds);
+    }
+  }, 1000);
+}
 
 function setPageGreen(event) {
   event.preventDefault()
