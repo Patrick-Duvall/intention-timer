@@ -74,22 +74,35 @@ var startTimer = document.querySelector('#start-timer')
 startTimer.addEventListener('click', beginTimer)
 
 function beginTimer(){
+  spinTimer(startTimer)
   var timer = document.querySelector('.activity-timer')
   var minutes = parseInt(timer.innerText.split(':')[0])
   var seconds = parseInt(timer.innerText.split(':')[1])
   
   var countdown = setInterval(function () {
-    if (minutes === 0 && seconds === 0 ){
-      clearInterval(countdown)
-    } else if (seconds > 0) {
+    if (seconds > 0) {
       seconds -= 1
       timer.innerText = stringifyTime(minutes, seconds)
+      if (seconds === 0){
+        clearInterval(countdown)
+        endTimer(startTimer)
+      }
     } else {
       minutes -= 1
       seconds = 59
       timer.innerText = stringifyTime(minutes, seconds)
     }
   }, 1000);
+}
+
+function spinTimer(timer){
+  timer.classList.add('spinning-loader')
+  timer.innerText = ('')
+}
+
+function endTimer(timer){
+  timer.classList.remove('spinning-loader')
+  timer.innerText = ('COMPLETE!')
 }
 
 function stringifyTime(minutes, seconds) {

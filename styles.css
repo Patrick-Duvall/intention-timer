@@ -191,6 +191,11 @@ margin: 10px 0 0 0;
   border: solid 5px rgb(134, 180, 64);
 }
 
+.green .spinning-loader {
+  border-left-color: rgb(134, 180, 64, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
 
 .red  #exercise-button{
   color: rgb(180, 101, 64)!important;
@@ -210,6 +215,12 @@ margin: 10px 0 0 0;
   border: solid 5px rgb(180, 101, 64);
 }
 
+.red .spinning-loader {
+  border-left-color: rgb(180, 101, 64, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
+
 
 .purple #meditate-button {
   color: rgb(152, 107, 173)!important;
@@ -227,6 +238,20 @@ margin: 10px 0 0 0;
 
 .purple #start-timer {
   border: solid 5px  rgb(152, 107, 173)
+}
+
+.purple .spinning-loader {
+  border-left-color: rgb(152, 107, 173, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
+@keyframes rotate-s-loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* remove number spinners */
