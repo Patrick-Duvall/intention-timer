@@ -34,16 +34,26 @@ body {
 
 .activity-timer-modal {
   font-size: large;
+  text-align: center;
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: #1e292a;
+}
+
+.activity-timer-modal h2 {
+margin: 10px 0 0 0;
 }
 
 .activity-timer-modal h1 {
   padding-left: 5%;
   color: darkgray;
   font-size: 28px;
-  margin: 18px 0 9px 0;
+  margin: 18px 0 0 0;
+}
+
+.activity-timer-modal .activity-time {
+  line-height: 72px;
+  font-size: 96px;
 }
 
 .activity-form-modal h1 {
@@ -76,7 +86,7 @@ body {
 
 .inner-activity-container  button {
   padding: 10px 25px;
-  margin: 10px 7% 10%;
+  margin: 17% 7%;
   width: 120px;
   border: white solid 3px;
   background-color: #636363;
@@ -171,7 +181,6 @@ body {
 .green #start-timer {
   border: solid 5px rgb(134, 180, 64);
 }
-width: 250px;
 
 .red  #exercise-button{
   color: rgb(180, 101, 64)!important;
@@ -190,7 +199,6 @@ width: 250px;
 .red #start-timer {
   border: solid 5px rgb(180, 101, 64);
 }
-width: 250px;
 
 .purple #meditate-button {
   color: rgb(152, 107, 173)!important;
@@ -215,4 +223,3 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
-
