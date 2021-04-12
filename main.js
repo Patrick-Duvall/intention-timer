@@ -51,20 +51,18 @@ function submitForm(event){
 function setupActivityTimerModal() {
   var activityDescription = document.querySelector('#activity-description').value
   var intention = document.querySelector(".intention")
-  var timeAmount = document.querySelector(".activity-time")
+  var timeAmount = document.querySelector(".activity-timer")
   intention.innerText = activityDescription
   timeAmount.innerText = setTimer()
 }
 
 function setTimer() {
-  var seconds = parseInt(document.querySelector('#seconds').value)
-  var minutes = parseInt(document.querySelector('#minutes').value)
-  var newSeconds = (seconds % 60).toString()
-  newSeconds = newSeconds.length === 1 ? '0' + newSeconds : newSeconds
-  var addMinutes = Math.floor(seconds / 60)
-  var newMinutes = (minutes + addMinutes).toString()
-  newMinutes = newMinutes.length === 1 ? '0' + newMinutes : newMinutes
-  return newMinutes.toString() + ":" + newSeconds.toString()
+  let seconds = parseInt(document.querySelector('#seconds').value)
+  let minutes = parseInt(document.querySelector('#minutes').value)
+  let newSeconds = (seconds % 60)
+  let addMinutes = Math.floor(seconds / 60)
+  let newMinutes = (minutes + addMinutes)
+  return stringifyTime(newMinutes, newSeconds)
 }
 
 function showActivityTimerModal() {
@@ -72,6 +70,33 @@ function showActivityTimerModal() {
   activityTimerModal.classList.remove('hidden')
 }
 
+var startTimer = document.querySelector('#start-timer')
+startTimer.addEventListener('click', beginTimer)
+
+function beginTimer(){
+  var timer = document.querySelector('.activity-timer')
+  var minutes = parseInt(timer.innerText.split(':')[0])
+  var seconds = parseInt(timer.innerText.split(':')[1])
+  
+  var countdown = setInterval(function () {
+    if (minutes === 0 && seconds === 0 ){
+      clearInterval(countdown)
+    } else if (seconds > 0) {
+      seconds -= 1
+      timer.innerText = stringifyTime(minutes, seconds)
+    } else {
+      minutes -= 1
+      seconds = 59
+      timer.innerText = stringifyTime(minutes, seconds)
+    }
+  }, 1000);
+}
+
+function stringifyTime(minutes, seconds) {
+  let paddedMinutes = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString()
+  let paddedSeconds = seconds.toString().length === 1 ? '0' + seconds.toString() : seconds.toString()
+  return paddedMinutes + ':' + paddedSeconds
+}
 
 function setPageGreen(event) {
   event.preventDefault()
