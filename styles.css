@@ -4,6 +4,10 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.hidden {
+  display: none!important;
+}
+
 .header h1 {
   text-align: center;
   padding: 10px 0;
@@ -12,20 +16,26 @@ body {
 
 .main-page {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   grid-gap: 3px;
   height: 92vh;
   margin: -10px;
 }
 
-.activity-container {
+/* NEW activity modal */
+
+.activity-form-modal {
   font-size: large;
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: #1e292a;
 }
 
-.activity-container h1 {
+.type-buttons {
+  display: flex;
+}
+
+.activity-form-modal h1 {
   padding-left: 5%;
   color: darkgray;
   font-size: 28px;
@@ -55,7 +65,7 @@ body {
 
 .inner-activity-container  button {
   padding: 10px 25px;
-  margin: 10px 7% 10%;
+  margin: 60px 7%;
   width: 120px;
   border: white solid 3px;
   background-color: #636363;
@@ -71,8 +81,17 @@ body {
   background-color: #636363;
   border: 0;
   font-size: large;
+  color: rgb(168, 159, 159);
   padding: 28px 0 0 0;
   border-bottom: 1px white solid;
+}
+
+.error-message {
+  font-size: small;
+}
+
+.buttons-error-message {
+  font-size: small;
 }
 
 .inline-form-element {
@@ -89,7 +108,7 @@ body {
   padding: 10% 0;
 }
 
-#to-accomplish {
+#activity-description {
   width: 87%;
 }
 
@@ -102,6 +121,42 @@ body {
   float: right;
   margin: 12% 13% 0 0;
 }
+
+/* Current Activity Modal */
+
+.activity-timer-modal {
+  font-size: large;
+  text-align: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #1e292a;
+}
+
+.activity-timer-modal h2 {
+margin: 10px 0 0 0;
+}
+
+.activity-timer-modal h1 {
+  padding-left: 5%;
+  color: darkgray;
+  font-size: 28px;
+  margin: 18px 0 0 0;
+}
+
+.activity-timer-modal .activity-time {
+  line-height: 72px;
+  font-size: 96px;
+}
+
+#start-timer {
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  margin: 10%;
+  font-size: x-large;
+}
+
+/* PAST Activities section */
 
 .past-activities-container {
   background-color: #1e292a;
@@ -116,4 +171,66 @@ body {
 
 .past-activities-container p {
   text-align: center;
+}
+
+/* COLOR LOGIC */
+.green #study-button {
+  color: rgb(134, 180, 64)!important;
+  border-color: rgb(134, 180, 64)!important;
+}
+.green #study-button .button-image {
+  filter: invert(61%) sepia(8%) saturate(3188%) hue-rotate(42deg) brightness(108%) contrast(77%) 
+}
+.green .error-message {
+  color: rgb(134, 180, 64)!important;
+}
+.green .buttons-error-message {
+  color: rgb(134, 180, 64)!important;
+}
+.green #start-timer {
+  border: solid 5px rgb(134, 180, 64);
+}
+
+
+.red  #exercise-button{
+  color: rgb(180, 101, 64)!important;
+  border-color: rgb(180, 101, 64)!important;
+}
+.red #exercise-button .button-image {
+  filter: invert(59%) sepia(15%) saturate(5795%) hue-rotate(336deg) brightness(78%) contrast(74%)
+}
+.red .error-message {
+  color: rgb(180, 101, 64)!important;
+}
+.red .buttons-error-message {
+  color: rgb(180, 101, 64)!important;
+}
+
+.red #start-timer {
+  border: solid 5px rgb(180, 101, 64);
+}
+
+
+.purple #meditate-button {
+  color: rgb(152, 107, 173)!important;
+  border-color: rgb(152, 107, 173)!important;
+}
+.purple #meditate-button .button-image {
+  filter: invert(52%) sepia(13%) saturate(1485%) hue-rotate(237deg) brightness(88%) contrast(89%)
+}
+.purple .error-message {
+  color: rgb(152, 107, 173)!important;
+}
+.purple .buttons-error-message {
+  color: rgb(152, 107, 173)!important;
+}
+
+.purple #start-timer {
+  border: solid 5px  rgb(152, 107, 173)
+}
+
+/* remove number spinners */
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

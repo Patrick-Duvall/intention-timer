@@ -13,34 +13,62 @@
     <h1>Intention Timer</h1>
   </div>
   <div class="main-page">
-    <div class="activity-container">
+    <div class="activity-form-modal">
       <h1>New Activity</h1>
-      <form class="inner-activity-container">
+      <form class="inner-activity-container" autocomplete="off">
         <div class="centered-div">
+          <label for="category" class="button-label">Select a category:</label><br>
+          <div class='buttons-error-message hidden'>⚠ Please choose a category</div>
           <div class="type-buttons">
-            <label for="category" class="button-label">Select a category:</label><br>
-            <button id="study-button"><img class="button-image" src="assets/study.svg"><br>Study</button>
-            <button><img class="button-image" src="assets/crown.svg"><br>Meditate</button>
-            <button><img class="button-image" src="assets/shoe.svg"><br>Exercise</button>
+            <button id="study-button">
+              <img id="study-image" class="button-image" src="assets/study.svg"><br>Study
+            </button>
+            <button id="meditate-button">
+              <img class="button-image" src="assets/crown.svg"><br>Meditate
+            </button>
+            <button id="exercise-button">
+              <img class="button-image" src="assets/shoe.svg"><br>Exercise
+            </button>
           </div>
           <div id="goal-statement">
-            <label for="to-accomplish">What would you like to accomplish during this time?</label><br>
-            <input type="text" id="to-accomplish">
+            <label for="activity-description">What would you like to accomplish during this time?</label><br>
+            <input type="text" id="activity-description" required
+            oninvalid="setCustomValidity('⚠ A description is required')"
+            oninput="setCustomValidity('')"
+            >
           </div>
           <div class="minutes-seconds">
             <div class="inline-form-element ">
               <label for="minutes">Minutes</label><br>
-              <input type="number" id="minutes" class="short-input">
+              <input type="number" id="minutes" class="short-input" required
+              oninvalid="setCustomValidity('⚠ Please choose a duration in minutes')"
+              oninput="setCustomValidity('')"
+              >
             </div>
             <div class="inline-form-element">
               <label for="seconds">Seconds</label><br>
-              <input type="number" id="seconds" class="short-input">
+              <input type="number" id="seconds" class="short-input" required
+              oninvalid="setCustomValidity('⚠ Please choose a duration in seconds')"
+              oninput="setCustomValidity('')"
+              >
             </div>
-            <button id="start"">Start Activity</button>
+            <button id="start" type="submit">Start Activity</button>
           </div>
         </div>
       </form>
     </div>
+    
+    <div class="activity-timer-modal hidden">
+      <h1>New Activity</h1>
+      <div class="inner-activity-container">
+        <div class="centered-div">
+          <h2 class="intention"></h2>
+          <div class="activity-time"></div>
+          <button id="start-timer">START</button>
+        </div>
+      </div>
+    </div>
+
     <div class="past-activities-container">
       <h1>Past Activities</h1>
       <p>You haven't logged and activities yet.</p>
@@ -48,7 +76,7 @@
     </div>
   </div>
 
-  <script src="./src/Activity.js"></script>
-  <script src="./src/main.js"></script>
+  <script src="./Activity.js"></script>
+  <script src="./main.js"></script>
 </body>
 </html>
