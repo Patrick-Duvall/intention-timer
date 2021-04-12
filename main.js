@@ -80,7 +80,8 @@ function showActivityTimerModal() {
 }
 
 
-function setFormGreen() {
+function setFormGreen(event) {
+  event.preventDefault()
   categorySelected = 'study'
   pageColor = 'green'
   mainPage.classList.add("green")
@@ -88,7 +89,8 @@ function setFormGreen() {
   mainPage.classList.remove("red")
 }
 
-function setFormPurple() {
+function setFormPurple(event) {
+  event.preventDefault()
   categorySelected = 'meditate'
   pageColor = 'purple'
   mainPage.classList.add("purple")
@@ -96,7 +98,8 @@ function setFormPurple() {
   mainPage.classList.remove("green")
 }
 
-function setFormRed() {
+function setFormRed(event) {
+  event.preventDefault()
   categorySelected = 'exercise'
   pageColor = 'red'
   mainPage.classList.add("red")
