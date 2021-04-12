@@ -25,28 +25,28 @@ body {
   display: flex;
 }
 
-.activity-container {
+.activity-form-modal {
   font-size: large;
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: #1e292a;
 }
 
-.current-activity-container {
+.activity-timer-modal {
   font-size: large;
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: #1e292a;
 }
 
-.current-activity-container h1 {
+.activity-timer-modal h1 {
   padding-left: 5%;
   color: darkgray;
   font-size: 28px;
   margin: 18px 0 9px 0;
 }
 
-.activity-container h1 {
+.activity-form-modal h1 {
   padding-left: 5%;
   color: darkgray;
   font-size: 28px;
@@ -133,6 +133,13 @@ body {
   margin: 12% 13% 0 0;
 }
 
+#start-timer {
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  font-size: x-large;
+}
+
 .past-activities-container {
   background-color: #1e292a;
   color: darkgray;
@@ -161,6 +168,10 @@ body {
 .green .buttons-error-message {
   color: rgb(134, 180, 64)!important;
 }
+.green #start-timer {
+  border: solid 5px rgb(134, 180, 64);
+}
+width: 250px;
 
 .red  #exercise-button{
   color: rgb(180, 101, 64)!important;
@@ -176,6 +187,11 @@ body {
   color: rgb(180, 101, 64)!important;
 }
 
+.red #start-timer {
+  border: solid 5px rgb(180, 101, 64);
+}
+width: 250px;
+
 .purple #meditate-button {
   color: rgb(152, 107, 173)!important;
   border-color: rgb(152, 107, 173)!important;
@@ -190,6 +206,11 @@ body {
   color: rgb(152, 107, 173)!important;
 }
 
+.purple #start-timer {
+  border: solid 5px  rgb(152, 107, 173)
+}
+
+/* remove number spinners */
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;

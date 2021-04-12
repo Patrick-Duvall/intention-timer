@@ -4,6 +4,8 @@ var exerciseButton = document.querySelector("#exercise-button")
 var categorySelected = false
 var pageColor = ''
 var mainPage = document.querySelector('.main-page')
+var activityTimerModal = document.querySelector('.activity-timer-modal')
+var activityFormModal = document.querySelector('.activity-form-modal')
 var buttonsError = document.querySelector('.buttons-error-message')
 
 studyButton.addEventListener("click", setFormGreen)
@@ -42,40 +44,39 @@ submitButton.addEventListener("click", function () {
   if (invalidFields.length > 0) {
     invalidFields[0].focus();
   }
-  // debugger
 });
 
 submitButton.addEventListener("click", submitForm)
 
 function submitForm(event){
   if (!(form.checkValidity() && categorySelected)) {return}
-  // debugger
   event.preventDefault()
-  var seconds = document.querySelector('#seconds').value
-  var minutes = document.querySelector('#minutes').value
+  setupActivityTimerModal()
+  showActivityTimerModal()
+}
+
+function setupActivityTimerModal() {
   var toAccomplish = document.querySelector('#to-accomplish').value
-  activityContainer = document.querySelector('.activity-container')
   var intention = document.querySelector(".intention")
   var timeAmount = document.querySelector(".activity-time")
   intention.innerText = toAccomplish
-  timeAmount.innerText = convertTime(seconds, minutes)
-  
-  currentActivityContainer = document.querySelector('.current-activity-container')
-  activityContainer.classList.add('hidden')
-  currentActivityContainer.classList.remove('hidden')
+  timeAmount.innerText = setTimer()
 }
 
-function convertTime(seconds, minutes) {
-  debugger
-  seconds = parseInt(seconds)
-  minutes = parseInt(minutes)
+function setTimer() {
+  var seconds = parseInt(document.querySelector('#seconds').value)
+  var minutes = parseInt(document.querySelector('#minutes').value)
   var newSeconds = (seconds % 60).toString()
   newSeconds = newSeconds.length === 1 ? '0' + newSeconds : newSeconds
   var addMinutes = Math.floor(seconds / 60)
   var newMinutes = (minutes + addMinutes).toString()
   newMinutes = newMinutes.length === 1 ? '0' + newMinutes : newMinutes
-  debugger
   return newMinutes.toString() + ":" + newSeconds.toString()
+}
+
+function showActivityTimerModal() {
+  activityFormModal.classList.add('hidden')
+  activityTimerModal.classList.remove('hidden')
 }
 
 
