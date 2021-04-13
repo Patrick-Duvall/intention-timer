@@ -18,7 +18,7 @@ var buttonsError = document.querySelector('.buttons-error-message')
 // global variables
 var categorySelected 
 var currentActivity
-var allActivities = []
+// var activities = []
 var pageColor
 
 studyButton.addEventListener("click", setPageGreen)
@@ -33,6 +33,16 @@ startActivityButton.addEventListener("click", submitForm)
 startTimer.addEventListener('click', beginTimer)
 
 createNewActivityButton.addEventListener("click", displayNewActivityForm)
+
+window.onload = function () {
+
+  allActivities = JSON.parse(localStorage.getItem('allActivities')); //get data from storage
+  if (allActivities !== null) { //if data exist (todos are in storage)
+    console.log('dog');
+  } else { //if nothing exist in storage, keep todos array empty
+    allActivities = [];
+  }
+}
 
 function renderErrorMessages() {
   var invalidFields = form.querySelectorAll(":invalid")
@@ -120,7 +130,7 @@ function endTimer(timer){
 
 function recordActivity() {
   currentActivity.markComplete()
-  allActivities.push(currentActivity)
+  currentActivity.saveToStorage(allActivities)
   displayPastActivities()
   displayActivityCompletedModal()
   currentActivity = null

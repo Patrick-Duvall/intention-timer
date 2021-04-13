@@ -42,7 +42,10 @@ class Activity {
     return this.minutesRemaining === 0 && this.secondsRemaining === 0
   }
 
-  saveToStorage() {
-    
+  saveToStorage(allActivities) {
+    debugger
+    allActivities.push(this)
+    debugger
+    localStorage.setItem('allActivities', JSON.stringify(allActivities))
   }
 }
