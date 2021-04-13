@@ -6,6 +6,7 @@ var form = document.querySelector(".inner-activity-container")
 var startActivityButton = form.querySelector("#start-activity-button")
 var logActivityButton = document.querySelector('#log-activity-button')
 var createNewActivityButton = document.querySelector('#create-new-activity-button')
+var startTimer = document.querySelector('#start-timer')
 
 // elements that toggle hidden
 var mainPage = document.querySelector('.main-page')
@@ -28,6 +29,8 @@ exerciseButton.addEventListener("click", setPageRed)
 
 startActivityButton.addEventListener("click", renderErrorMessages)
 startActivityButton.addEventListener("click", submitForm)
+
+startTimer.addEventListener('click', beginTimer)
 
 createNewActivityButton.addEventListener("click", displayNewActivityForm)
 
@@ -89,9 +92,6 @@ function displayActivityTimerModal() {
   activityTimerModal.classList.remove('hidden')
 }
 
-var startTimer = document.querySelector('#start-timer')
-startTimer.addEventListener('click', beginTimer)
-
 function beginTimer(){
   spinTimer(startTimer)
   var timer = document.querySelector('.activity-time-display')
@@ -139,6 +139,7 @@ function displayNewActivityForm() {
   activityCompletedModal.classList.add('hidden')
   activityFormModal.classList.remove('hidden')
   resetActivityForm()
+  resetTimer()
 }
 
 function displayActivityCompletedModal() {
@@ -154,18 +155,14 @@ function displayPastActivities(){
 
 function renderPastActivities() {
   pastActivities = document.querySelector('.past-activities-container')
-  html = ''
-  for (let i = 0; i < allActivities.length; i++) {
-    activity = allActivities[i]
-    html += `
-    <div class="past-activity ${activity.category}" id="${activity.id}">
-      <h5>${activity.category}</h5>
-      <h6>${activity.minutes} MIN ${activity.seconds} SECONDS</h6>
+    html = `
+    <div class="past-activity ${currentActivity.category}" id="${currentActivity.id}">
+      <h5>${currentActivity.category}</h5>
+      <h6>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</h6>
       <div class="color-line"></div>
-      <p>${activity.description}</p>
+      <p>${currentActivity.description}</p>
     </div>
     `
-  }
   pastActivities.innerHTML += html
 }
 
@@ -175,8 +172,12 @@ function stringifyTime(minutes, seconds) {
   return paddedMinutes + ':' + paddedSeconds
 }
 
-function resetActivityForm() {
+function resetTimer(){
+  startTimer.innerText = 'START'
+  logActivityButton.classList.add('hidden')
+}
 
+function resetActivityForm() {
   pageColor = ''
   categorySelected = null
   document.querySelector('#activity-description').value = ''
@@ -185,7 +186,6 @@ function resetActivityForm() {
   mainPage.classList.remove('green')
   mainPage.classList.remove('red')
   mainPage.classList.remove('purple')
-  debugger
 }
 
 function setPageGreen(event) {
