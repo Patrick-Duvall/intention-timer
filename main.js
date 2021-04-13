@@ -75,16 +75,7 @@ function setupActivityTimerModal() {
   var intention = document.querySelector(".intention")
   var timeAmount = document.querySelector(".activity-time-display")
   intention.innerText = currentActivity.description
-  timeAmount.innerText = setTimer()
-}
-
-function setTimer() {
-  let seconds = currentActivity.seconds
-  let minutes = currentActivity.minutes
-  let newSeconds = (seconds % 60)
-  let addMinutes = Math.floor(seconds / 60)
-  let newMinutes = (minutes + addMinutes)
-  return stringifyTime(newMinutes, newSeconds)
+  timeAmount.innerText = stringifyTime(currentActivity.minutes, currentActivity.seconds)
 }
 
 function displayActivityTimerModal() {
@@ -97,23 +88,21 @@ function beginTimer(){
   startTimer.classList.add('clicked')
   spinTimer(startTimer)
   var timer = document.querySelector('.activity-time-display')
-  var minutes = parseInt(timer.innerText.split(':')[0])
-  var seconds = parseInt(timer.innerText.split(':')[1])
   
-  var countdown = setInterval(function () {
-    if (seconds > 0) {
-      seconds -= 1
-      timer.innerText = stringifyTime(minutes, seconds)
-      if (seconds === 0){
-        clearInterval(countdown)
-        endTimer(startTimer)
-      }
-    } else {
-      minutes -= 1
-      seconds = 59
-      timer.innerText = stringifyTime(minutes, seconds)
+  var updateClock = setInterval(function () { 
+    currentActivity.countdown()
+    if (currentActivity.isCompleted()){
+      clearInterval(updateClock)
+      endTimer(startTimer)
     }
+    timer.innerText = stringifyTime(currentActivity.minutesRemaining, currentActivity.secondsRemaining)
   }, 1000);
+}
+
+function stringifyTime(minutes, seconds) {
+  let paddedMinutes = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString()
+  let paddedSeconds = seconds.toString().length === 1 ? '0' + seconds.toString() : seconds.toString()
+  return paddedMinutes + ':' + paddedSeconds
 }
 
 function spinTimer(timer){
@@ -166,12 +155,6 @@ function renderPastActivities() {
     </div>
     `
   pastActivities.innerHTML += html
-}
-
-function stringifyTime(minutes, seconds) {
-  let paddedMinutes = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString()
-  let paddedSeconds = seconds.toString().length === 1 ? '0' + seconds.toString() : seconds.toString()
-  return paddedMinutes + ':' + paddedSeconds
 }
 
 function resetTimer(){
