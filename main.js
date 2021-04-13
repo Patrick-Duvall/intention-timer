@@ -138,6 +138,7 @@ function recordActivity() {
 function displayNewActivityForm() {
   activityCompletedModal.classList.add('hidden')
   activityFormModal.classList.remove('hidden')
+  resetActivityForm()
 }
 
 function displayActivityCompletedModal() {
@@ -172,6 +173,19 @@ function stringifyTime(minutes, seconds) {
   let paddedMinutes = minutes.toString().length === 1 ? '0' + minutes.toString() : minutes.toString()
   let paddedSeconds = seconds.toString().length === 1 ? '0' + seconds.toString() : seconds.toString()
   return paddedMinutes + ':' + paddedSeconds
+}
+
+function resetActivityForm() {
+
+  pageColor = ''
+  categorySelected = null
+  document.querySelector('#activity-description').value = ''
+  document.querySelector('#minutes').value = null
+  document.querySelector('#seconds').value = null
+  mainPage.classList.remove('green')
+  mainPage.classList.remove('red')
+  mainPage.classList.remove('purple')
+  debugger
 }
 
 function setPageGreen(event) {
