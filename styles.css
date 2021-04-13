@@ -1,7 +1,7 @@
 body {
   background-color: #636363;
   color: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .hidden {
@@ -22,23 +22,26 @@ body {
   margin: -10px;
 }
 
-/* NEW activity modal */
-
-.activity-form-modal {
+.modal {
   font-size: large;
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: #1e292a;
 }
 
+.modal h1 {
+  padding-left: 5%;
+  color: darkgray;
+  font-size: 28px;
+}
+
+/* NEW activity modal */
+
 .type-buttons {
   display: flex;
 }
 
-.activity-form-modal h1 {
-  padding-left: 5%;
-  color: darkgray;
-  font-size: 28px;
+.activity-form h1 {
   margin: 18px 0 9px 0;
 }
 
@@ -53,6 +56,7 @@ body {
 
 .centered-div {
   margin: 10px auto 0px;
+  overflow:auto;
   padding: 30px 0;
   width: 80%;
 }
@@ -112,39 +116,34 @@ body {
   width: 87%;
 }
 
-#start {
+#start-activity-button {
   padding: 5px 20px;
   background-color: white;
   color: black;
   border-radius: 3px;
-  width: 150px;
+  width: 180px;
   float: right;
   margin: 12% 13% 0 0;
 }
 
 /* Current Activity Modal */
 
-.activity-timer-modal {
-  font-size: large;
+.activity-timer {
   text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background-color: #1e292a;
 }
 
-.activity-timer-modal h2 {
+.activity-timer h2 {
 margin: 10px 0 0 0;
 }
 
-.activity-timer-modal h1 {
-  padding-left: 5%;
-  color: darkgray;
-  font-size: 28px;
+.activity-timer h1 {
   margin: 18px 0 0 0;
+  text-align: left;
 }
 
-.activity-timer-modal .activity-timer {
+.activity-timer .activity-time-display {
   line-height: 72px;
+  font-weight: bold;
   font-size: 96px;
 }
 
@@ -154,6 +153,34 @@ margin: 10px 0 0 0;
   width: 250px;
   margin: 10%;
   font-size: x-large;
+  margin: 12% auto;
+  display: block;
+}
+
+#start-timer:focus {
+    outline: none;
+}
+
+#log-activity-button {
+  padding: 5px 30px;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+
+/* Completed activity modal */
+
+
+#create-new-activity-button {
+  padding: 5px 30px;
+  background-color: white;
+  color: black;
+  width: 320px;
+  margin: 15% auto;
+  display: block;
 }
 
 /* PAST Activities section */
@@ -173,6 +200,60 @@ margin: 10px 0 0 0;
   text-align: center;
 }
 
+.past-activity{
+  width: 90%;
+  position: relative;
+  margin: 0 auto 12px;
+  text-align: left;
+  background-color: #636363;
+  color: white;
+  border-radius: 3px;
+}
+
+.past-activity h5 {
+  margin: 0;
+  padding: 8px 8px 0 8px;
+  font-size: 16px;
+}
+
+.past-activity h6 {
+  font-weight: lighter;
+  margin: 0;
+  padding: 0 8px 0;
+  font-size: 16px;
+}
+
+.past-activity p {
+  text-align: left;
+  color: darkgray;
+  font-size: 13px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 8px;
+}
+
+.past-activity .color-line {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 24px;
+  width: 4px;
+  border-radius: 2px;
+  float: right;
+}
+
+.Study .color-line{
+  background-color: rgb(134, 180, 64)!important;
+}
+
+.Meditate .color-line{
+  background-color :rgb(152, 107, 173)!important;
+}
+
+.Exercise .color-line{
+  background-color: rgb(180, 101, 64)!important;
+}
+
 /* COLOR LOGIC */
 .green #study-button {
   color: rgb(134, 180, 64)!important;
@@ -189,6 +270,11 @@ margin: 10px 0 0 0;
 }
 .green #start-timer {
   border: solid 5px rgb(134, 180, 64);
+}
+
+.green .spinning-loader {
+  border-left-color: rgb(134, 180, 64, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
 }
 
 
@@ -210,6 +296,12 @@ margin: 10px 0 0 0;
   border: solid 5px rgb(180, 101, 64);
 }
 
+.red .spinning-loader {
+  border-left-color: rgb(180, 101, 64, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
+
 
 .purple #meditate-button {
   color: rgb(152, 107, 173)!important;
@@ -227,6 +319,20 @@ margin: 10px 0 0 0;
 
 .purple #start-timer {
   border: solid 5px  rgb(152, 107, 173)
+}
+
+.purple .spinning-loader {
+  border-left-color: rgb(152, 107, 173, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
+@keyframes rotate-s-loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* remove number spinners */

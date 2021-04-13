@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <title>Document</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
     <h1>Intention Timer</h1>
   </div>
   <div class="main-page">
-    <div class="activity-form-modal">
+    <div class="activity-form modal">
       <h1>New Activity</h1>
       <form class="inner-activity-container" autocomplete="off">
         <div class="centered-div">
@@ -52,27 +52,36 @@
               oninput="setCustomValidity('')"
               >
             </div>
-            <button id="start" type="submit">Start Activity</button>
+            <button id="start-activity-button" type="submit">START ACTIVITY</button>
           </div>
         </div>
       </form>
     </div>
     
-    <div class="activity-timer-modal hidden">
-      <h1>New Activity</h1>
+    <div class="activity-timer modal hidden">
+      <h1>Current Activity</h1>
       <div class="inner-activity-container">
         <div class="centered-div">
           <h2 class="intention"></h2>
-          <div class="activity-timer"></div>
+          <div class="activity-time-display"></div>
           <button id="start-timer">START</button>
+          <button id="log-activity-button" class="hidden">LOG ACTIVITY</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="activity-completed modal hidden">
+      <h1>Completed Activity</h1>
+      <div class="inner-activity-container">
+        <div class="centered-div">
+          <button id="create-new-activity-button">CREATE A NEW ACTIVITY</button>
         </div>
       </div>
     </div>
 
     <div class="past-activities-container">
       <h1>Past Activities</h1>
-      <p>You haven't logged and activities yet.</p>
-      <p>Complete the form to the left to get started</p>
+      <p class="no-activities">You haven't logged and activities yet.<br>Complete the form to the left to get started</p>
     </div>
   </div>
 

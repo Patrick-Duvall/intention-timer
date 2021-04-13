@@ -1,21 +1,38 @@
+// buttons
 var studyButton = document.querySelector("#study-button")
 var meditateButton = document.querySelector("#meditate-button")
 var exerciseButton = document.querySelector("#exercise-button")
-var categorySelected = false
-var pageColor = ''
+var form = document.querySelector(".inner-activity-container")
+var startActivityButton = form.querySelector("#start-activity-button")
+var logActivityButton = document.querySelector('#log-activity-button')
+var createNewActivityButton = document.querySelector('#create-new-activity-button')
+var startTimer = document.querySelector('#start-timer')
+
+// elements that toggle hidden
 var mainPage = document.querySelector('.main-page')
-var activityTimerModal = document.querySelector('.activity-timer-modal')
-var activityFormModal = document.querySelector('.activity-form-modal')
+var activityTimerModal = document.querySelector('.activity-timer')
+var activityFormModal = document.querySelector('.activity-form')
+var activityCompletedModal = document.querySelector('.activity-completed')
 var buttonsError = document.querySelector('.buttons-error-message')
 
+// global variables
+var categorySelected 
+var currentActivity
+var allActivities = []
+var pageColor
+
 studyButton.addEventListener("click", setPageGreen)
+
 meditateButton.addEventListener("click", setPagePurple)
+
 exerciseButton.addEventListener("click", setPageRed)
 
-form = document.querySelector(".inner-activity-container")
+startActivityButton.addEventListener("click", renderErrorMessages)
+startActivityButton.addEventListener("click", submitForm)
 
-var submitButton = form.querySelector("#start")
-submitButton.addEventListener("click", renderErrorMessages)
+startTimer.addEventListener('click', beginTimer)
+
+createNewActivityButton.addEventListener("click", displayNewActivityForm)
 
 function renderErrorMessages() {
   var invalidFields = form.querySelectorAll(":invalid")
@@ -39,56 +56,46 @@ function renderErrorMessages() {
   }
 }
 
-submitButton.addEventListener("click", submitForm)
-
 function submitForm(event){
   event.preventDefault()
   if (!(form.checkValidity() && categorySelected)) {return}
+  createActivity()
   setupActivityTimerModal()
-  showActivityTimerModal()
+  displayActivityTimerModal()
+}
+
+function createActivity(){
+  var activityDescription = document.querySelector('#activity-description').value
+  let seconds = parseInt(document.querySelector('#seconds').value)
+  let minutes = parseInt(document.querySelector('#minutes').value)
+  currentActivity = new Activity(categorySelected, activityDescription, minutes, seconds)
 }
 
 function setupActivityTimerModal() {
-  var activityDescription = document.querySelector('#activity-description').value
   var intention = document.querySelector(".intention")
-  var timeAmount = document.querySelector(".activity-timer")
-  intention.innerText = activityDescription
-  timeAmount.innerText = setTimer()
+  var timeAmount = document.querySelector(".activity-time-display")
+  intention.innerText = currentActivity.description
+  timeAmount.innerText = stringifyTime(currentActivity.minutes, currentActivity.seconds)
 }
 
-function setTimer() {
-  let seconds = parseInt(document.querySelector('#seconds').value)
-  let minutes = parseInt(document.querySelector('#minutes').value)
-  let newSeconds = (seconds % 60)
-  let addMinutes = Math.floor(seconds / 60)
-  let newMinutes = (minutes + addMinutes)
-  return stringifyTime(newMinutes, newSeconds)
-}
-
-function showActivityTimerModal() {
+function displayActivityTimerModal() {
   activityFormModal.classList.add('hidden')
   activityTimerModal.classList.remove('hidden')
 }
 
-var startTimer = document.querySelector('#start-timer')
-startTimer.addEventListener('click', beginTimer)
-
 function beginTimer(){
-  var timer = document.querySelector('.activity-timer')
-  var minutes = parseInt(timer.innerText.split(':')[0])
-  var seconds = parseInt(timer.innerText.split(':')[1])
+  if(startTimer.classList.contains('clicked')) return
+  startTimer.classList.add('clicked')
+  spinTimer(startTimer)
+  var timer = document.querySelector('.activity-time-display')
   
-  var countdown = setInterval(function () {
-    if (minutes === 0 && seconds === 0 ){
-      clearInterval(countdown)
-    } else if (seconds > 0) {
-      seconds -= 1
-      timer.innerText = stringifyTime(minutes, seconds)
-    } else {
-      minutes -= 1
-      seconds = 59
-      timer.innerText = stringifyTime(minutes, seconds)
+  var updateClock = setInterval(function () { 
+    currentActivity.countdown()
+    if (currentActivity.isCompleted()){
+      clearInterval(updateClock)
+      endTimer(startTimer)
     }
+    timer.innerText = stringifyTime(currentActivity.minutesRemaining, currentActivity.secondsRemaining)
   }, 1000);
 }
 
@@ -98,9 +105,78 @@ function stringifyTime(minutes, seconds) {
   return paddedMinutes + ':' + paddedSeconds
 }
 
+function spinTimer(timer){
+  timer.classList.add('spinning-loader')
+  timer.innerText = ('')
+}
+
+function endTimer(timer){
+  timer.classList.remove('spinning-loader')
+  timer.innerText = ('COMPLETE!')
+  
+  logActivityButton.addEventListener('click', recordActivity)
+  logActivityButton.classList.remove('hidden')
+}
+
+function recordActivity() {
+  currentActivity.markComplete()
+  allActivities.push(currentActivity)
+  displayPastActivities()
+  displayActivityCompletedModal()
+  currentActivity = null
+}
+
+function displayNewActivityForm() {
+  activityCompletedModal.classList.add('hidden')
+  activityFormModal.classList.remove('hidden')
+  resetActivityForm()
+  resetTimer()
+}
+
+function displayActivityCompletedModal() {
+  activityCompletedModal.classList.remove('hidden')
+  activityTimerModal.classList.add('hidden')
+}
+
+function displayPastActivities(){
+  noActivitiesReminder = document.querySelector('.no-activities')
+  noActivitiesReminder.classList.add('hidden')
+  renderPastActivities()
+}
+
+function renderPastActivities() {
+  pastActivities = document.querySelector('.past-activities-container')
+    html = `
+    <div class="past-activity ${currentActivity.category}" id="${currentActivity.id}">
+      <h5>${currentActivity.category}</h5>
+      <h6>${currentActivity.displayTime()}</h6>
+      <div class="color-line"></div>
+      <p>${currentActivity.description}</p>
+    </div>
+    `
+  pastActivities.innerHTML += html
+}
+
+function resetTimer(){
+  startTimer.innerText = 'START'
+  startTimer.classList.remove('clicked')
+  logActivityButton.classList.add('hidden')
+}
+
+function resetActivityForm() {
+  pageColor = ''
+  categorySelected = null
+  document.querySelector('#activity-description').value = ''
+  document.querySelector('#minutes').value = null
+  document.querySelector('#seconds').value = null
+  mainPage.classList.remove('green')
+  mainPage.classList.remove('red')
+  mainPage.classList.remove('purple')
+}
+
 function setPageGreen(event) {
   event.preventDefault()
-  categorySelected = 'study'
+  categorySelected = 'Study'
   pageColor = 'green'
   mainPage.classList.add("green")
   mainPage.classList.remove("purple")
@@ -109,7 +185,7 @@ function setPageGreen(event) {
 
 function setPagePurple(event) {
   event.preventDefault()
-  categorySelected = 'meditate'
+  categorySelected = 'Meditate'
   pageColor = 'purple'
   mainPage.classList.add("purple")
   mainPage.classList.remove("red")
@@ -118,7 +194,7 @@ function setPagePurple(event) {
 
 function setPageRed(event) {
   event.preventDefault()
-  categorySelected = 'exercise'
+  categorySelected = 'Exercise'
   pageColor = 'red'
   mainPage.classList.add("red")
   mainPage.classList.remove("green")
