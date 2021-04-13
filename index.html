@@ -52,14 +52,14 @@
               oninput="setCustomValidity('')"
               >
             </div>
-            <button id="start" type="submit">Start Activity</button>
+            <button id="start-activity-button" type="submit">Start Activity</button>
           </div>
         </div>
       </form>
     </div>
     
     <div class="activity-timer-modal hidden">
-      <h1>New Activity</h1>
+      <h1>Current Activity</h1>
       <div class="inner-activity-container">
         <div class="centered-div">
           <h2 class="intention"></h2>
@@ -70,10 +70,16 @@
       </div>
     </div>
 
+    <div class="completed-activity-modal hidden">
+      <h1>Completed Activity</h1>
+      <div class="inner-activity-container">
+        <button id="create-activity-button">CREATE A NEW ACTIVITY</button>
+      </div>
+    </div>
+
     <div class="past-activities-container">
       <h1>Past Activities</h1>
-      <p>You haven't logged and activities yet.</p>
-      <p>Complete the form to the left to get started</p>
+      <p class="no-activities">You haven't logged and activities yet.<br>Complete the form to the left to get started</p>
     </div>
   </div>
 

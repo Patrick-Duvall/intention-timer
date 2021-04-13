@@ -1,21 +1,32 @@
+// buttons
 var studyButton = document.querySelector("#study-button")
 var meditateButton = document.querySelector("#meditate-button")
 var exerciseButton = document.querySelector("#exercise-button")
-var categorySelected = false
-var pageColor = ''
+var form = document.querySelector(".inner-activity-container")
+var startActivityButton = form.querySelector("#start-activity-button")
+var logActivityButton = document.querySelector('#log-activity-button')
+var createActivityButton = document.querySelector('#create-activity-button')
+
+// elements that toggle hidden
 var mainPage = document.querySelector('.main-page')
 var activityTimerModal = document.querySelector('.activity-timer-modal')
 var activityFormModal = document.querySelector('.activity-form-modal')
 var buttonsError = document.querySelector('.buttons-error-message')
 
+// global variables
+var categorySelected 
+var currentActivity
+var allActivities = []
+var pageColor
+
 studyButton.addEventListener("click", setPageGreen)
+
 meditateButton.addEventListener("click", setPagePurple)
+
 exerciseButton.addEventListener("click", setPageRed)
 
-form = document.querySelector(".inner-activity-container")
-
-var submitButton = form.querySelector("#start")
-submitButton.addEventListener("click", renderErrorMessages)
+startActivityButton.addEventListener("click", renderErrorMessages)
+startActivityButton.addEventListener("click", submitForm)
 
 function renderErrorMessages() {
   var invalidFields = form.querySelectorAll(":invalid")
@@ -39,26 +50,31 @@ function renderErrorMessages() {
   }
 }
 
-submitButton.addEventListener("click", submitForm)
-
 function submitForm(event){
   event.preventDefault()
   if (!(form.checkValidity() && categorySelected)) {return}
+  createActivity()
   setupActivityTimerModal()
   showActivityTimerModal()
 }
 
-function setupActivityTimerModal() {
+function createActivity(){
   var activityDescription = document.querySelector('#activity-description').value
+  let seconds = parseInt(document.querySelector('#seconds').value)
+  let minutes = parseInt(document.querySelector('#minutes').value)
+  currentActivity = new Activity(categorySelected, activityDescription, minutes, seconds)
+}
+
+function setupActivityTimerModal() {
   var intention = document.querySelector(".intention")
   var timeAmount = document.querySelector(".activity-timer")
-  intention.innerText = activityDescription
+  intention.innerText = currentActivity.description
   timeAmount.innerText = setTimer()
 }
 
 function setTimer() {
-  let seconds = parseInt(document.querySelector('#seconds').value)
-  let minutes = parseInt(document.querySelector('#minutes').value)
+  let seconds = currentActivity.seconds
+  let minutes = currentActivity.minutes
   let newSeconds = (seconds % 60)
   let addMinutes = Math.floor(seconds / 60)
   let newMinutes = (minutes + addMinutes)
@@ -103,8 +119,44 @@ function spinTimer(timer){
 function endTimer(timer){
   timer.classList.remove('spinning-loader')
   timer.innerText = ('COMPLETE!')
-  var logActivityButton = document.querySelector('#log-activity-button')
+  
+  logActivityButton.addEventListener('click', recordActivity)
   logActivityButton.classList.remove('hidden')
+}
+
+function recordActivity() {
+  currentActivity.markComplete()
+  allActivities.push(currentActivity)
+  displayPastActivities()
+  displayCompletedActivityModal()
+  currentActivity = null
+}
+
+function displayCompletedActivityModal() {
+  document.querySelector('.completed-activity-modal').classList.remove('hidden')
+  document.querySelector('.activity-timer-modal').classList.add('hidden')
+}
+
+function displayPastActivities(){
+  noActivitiesReminder = document.querySelector('.no-activities')
+  noActivitiesReminder.classList.add('hidden')
+  renderPastActivities()
+}
+
+function renderPastActivities() {
+  pastActivities = document.querySelector('.past-activities-container')
+  html = ''
+  for (let i = 0; i < allActivities.length; i++) {
+    activity = allActivities[i]
+    html += `
+    <div class="past-activity ${activity.type}" id="${activity.id}">
+      <h3>${activity.category}</h3>
+      <p>${activity.description}</p>
+      <p>${activity.minutes} MIN ${activity.seconds} SECONDS</p>
+      </div>
+    `
+  }
+  pastActivities.innerHTML += html
 }
 
 function stringifyTime(minutes, seconds) {

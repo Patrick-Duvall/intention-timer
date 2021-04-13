@@ -112,7 +112,7 @@ body {
   width: 87%;
 }
 
-#start {
+#start-activity-button {
   padding: 5px 20px;
   background-color: white;
   color: black;
@@ -141,6 +141,7 @@ margin: 10px 0 0 0;
   color: darkgray;
   font-size: 28px;
   margin: 18px 0 0 0;
+  text-align: left;
 }
 
 .activity-timer-modal .activity-timer {
@@ -168,6 +169,14 @@ margin: 10px 0 0 0;
   display: block;
 }
 
+/* Completed activity modal */
+.completed-activity-modal {
+  font-size: large;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #1e292a;
+}
+
 /* PAST Activities section */
 
 .past-activities-container {
@@ -183,6 +192,13 @@ margin: 10px 0 0 0;
 
 .past-activities-container p {
   text-align: center;
+}
+
+.past-activity{
+  width: 90%;
+  margin: auto;
+  background-color: #636363;
+  color: white;
 }
 
 /* COLOR LOGIC */
