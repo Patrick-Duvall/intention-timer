@@ -1,7 +1,7 @@
 body {
   background-color: #636363;
   color: white;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .hidden {
@@ -156,6 +156,10 @@ margin: 10px 0 0 0;
   display: block;
 }
 
+#start-timer:focus {
+    outline: none;
+}
+
 #log-activity-button {
   padding: 5px 30px;
   background-color: white;
@@ -212,7 +216,7 @@ margin: 10px 0 0 0;
 }
 
 .past-activity h6 {
-  font-weight: lightest;
+  font-weight: lighter;
   margin: 0;
   padding: 0 8px 0;
   font-size: 16px;
@@ -231,11 +235,22 @@ margin: 10px 0 0 0;
   position: absolute;
   top: 8px;
   right: 8px;
-  background-color: green;
   height: 24px;
   width: 4px;
   border-radius: 2px;
   float: right;
+}
+
+.Study .color-line{
+  background-color: rgb(134, 180, 64)!important;
+}
+
+.Meditate .color-line{
+  background-color :rgb(152, 107, 173)!important;
+}
+
+.Exercise .color-line{
+  background-color: rgb(180, 101, 64)!important;
 }
 
 /* COLOR LOGIC */

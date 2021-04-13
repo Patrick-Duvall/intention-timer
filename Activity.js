@@ -12,6 +12,16 @@ class Activity {
     this.completed = true
   }
 
+  displayTime() {
+    if(this.seconds === 0){
+      return `${this.minutes} MIN`
+    } else if (this.minutes === 0){
+      return `${this.seconds} SECONDS`
+    } else {
+      return `${this.minutes} MIN ${this.seconds} SECONDS`
+    }
+  }
+
   countdown() {
 
   }

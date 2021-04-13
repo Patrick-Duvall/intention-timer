@@ -93,6 +93,8 @@ function displayActivityTimerModal() {
 }
 
 function beginTimer(){
+  if(startTimer.classList.contains('clicked')) return
+  startTimer.classList.add('clicked')
   spinTimer(startTimer)
   var timer = document.querySelector('.activity-time-display')
   var minutes = parseInt(timer.innerText.split(':')[0])
@@ -158,7 +160,7 @@ function renderPastActivities() {
     html = `
     <div class="past-activity ${currentActivity.category}" id="${currentActivity.id}">
       <h5>${currentActivity.category}</h5>
-      <h6>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</h6>
+      <h6>${currentActivity.displayTime()}</h6>
       <div class="color-line"></div>
       <p>${currentActivity.description}</p>
     </div>
@@ -174,6 +176,7 @@ function stringifyTime(minutes, seconds) {
 
 function resetTimer(){
   startTimer.innerText = 'START'
+  startTimer.classList.remove('clicked')
   logActivityButton.classList.add('hidden')
 }
 
