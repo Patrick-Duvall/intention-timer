@@ -35,10 +35,9 @@ startTimer.addEventListener('click', beginTimer)
 createNewActivityButton.addEventListener("click", displayNewActivityForm)
 
 window.onload = function () {
-
   allActivities = JSON.parse(localStorage.getItem('allActivities')); //get data from storage
   if (allActivities !== null) { //if data exist (todos are in storage)
-    console.log('dog');
+    displayPastActivities()
   } else { //if nothing exist in storage, keep todos array empty
     allActivities = [];
   }
@@ -155,16 +154,24 @@ function displayPastActivities(){
 }
 
 function renderPastActivities() {
-  pastActivities = document.querySelector('.past-activities-container')
-    html = `
-    <div class="past-activity ${currentActivity.category}" id="${currentActivity.id}">
-      <h5>${currentActivity.category}</h5>
-      <h6>${currentActivity.displayTime()}</h6>
+  pastActivities = document.querySelector('.all-activities')
+  html = ''
+  for(let i = 0; i < allActivities.length; i++){
+    activity = new Activity(allActivities[i].category,
+      allActivities[i].description,
+      allActivities[i].minutes,
+      allActivities[i].seconds
+      )
+    html += `
+    <div class="past-activity ${activity.category}" id="${activity.id}">
+      <h5>${activity.category}</h5>
+      <h6>${activity.displayTime()}</h6>
       <div class="color-line"></div>
-      <p>${currentActivity.description}</p>
+      <p>${activity.description}</p>
     </div>
     `
-  pastActivities.innerHTML += html
+  }
+  pastActivities.innerHTML = html
 }
 
 function resetTimer(){

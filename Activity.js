@@ -2,7 +2,6 @@ class Activity {
   constructor(category, description, minutes, seconds) {
     this.category = category
     this.description = description
-
     let newSeconds = (seconds % 60)
     let addMinutes = Math.floor(seconds / 60)
     let newMinutes = (minutes + addMinutes)
@@ -43,9 +42,7 @@ class Activity {
   }
 
   saveToStorage(allActivities) {
-    debugger
     allActivities.push(this)
-    debugger
     localStorage.setItem('allActivities', JSON.stringify(allActivities))
   }
 }

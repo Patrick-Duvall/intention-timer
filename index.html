@@ -40,14 +40,14 @@
           <div class="minutes-seconds">
             <div class="inline-form-element ">
               <label for="minutes">Minutes</label><br>
-              <input type="number" id="minutes" class="short-input" required
+              <input type="number" id="minutes" class="short-input" min="0" step="1" required
               oninvalid="setCustomValidity('⚠ Please choose a duration in minutes')"
               oninput="setCustomValidity('')"
               >
             </div>
             <div class="inline-form-element">
               <label for="seconds">Seconds</label><br>
-              <input type="number" id="seconds" class="short-input" required
+              <input type="number" id="seconds" class="short-input" min="1" step="1" required
               oninvalid="setCustomValidity('⚠ Please choose a duration in seconds')"
               oninput="setCustomValidity('')"
               >
@@ -82,6 +82,7 @@
     <div class="past-activities-container">
       <h1>Past Activities</h1>
       <p class="no-activities">You haven't logged and activities yet.<br>Complete the form to the left to get started</p>
+      <div class="all-activities"></div>
     </div>
   </div>
 
