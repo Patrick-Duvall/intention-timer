@@ -22,23 +22,26 @@ body {
   margin: -10px;
 }
 
-/* NEW activity modal */
-
-.activity-form-modal {
+.modal {
   font-size: large;
   grid-column-start: 1;
   grid-column-end: 3;
   background-color: #1e292a;
 }
 
+.modal h1 {
+  padding-left: 5%;
+  color: darkgray;
+  font-size: 28px;
+}
+
+/* NEW activity modal */
+
 .type-buttons {
   display: flex;
 }
 
-.activity-form-modal h1 {
-  padding-left: 5%;
-  color: darkgray;
-  font-size: 28px;
+.activity-form h1 {
   margin: 18px 0 9px 0;
 }
 
@@ -124,27 +127,20 @@ body {
 
 /* Current Activity Modal */
 
-.activity-timer-modal {
-  font-size: large;
+.activity-timer {
   text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background-color: #1e292a;
 }
 
-.activity-timer-modal h2 {
+.activity-timer h2 {
 margin: 10px 0 0 0;
 }
 
-.activity-timer-modal h1 {
-  padding-left: 5%;
-  color: darkgray;
-  font-size: 28px;
+.activity-timer h1 {
   margin: 18px 0 0 0;
   text-align: left;
 }
 
-.activity-timer-modal .activity-timer {
+.activity-timer .activity-time-display {
   line-height: 72px;
   font-size: 96px;
 }
@@ -170,12 +166,6 @@ margin: 10px 0 0 0;
 }
 
 /* Completed activity modal */
-.completed-activity-modal {
-  font-size: large;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  background-color: #1e292a;
-}
 
 /* PAST Activities section */
 
@@ -196,9 +186,45 @@ margin: 10px 0 0 0;
 
 .past-activity{
   width: 90%;
+  position: relative;
   margin: auto;
+  text-align: left;
   background-color: #636363;
   color: white;
+  border-radius: 3px;
+}
+
+.past-activity h5 {
+  margin: 0;
+  padding: 8px 8px 0 8px;
+  font-size: 16px;
+}
+
+.past-activity h6 {
+  font-weight: lightest;
+  margin: 0;
+  padding: 0 8px 0;
+  font-size: 16px;
+}
+
+.past-activity p {
+  text-align: left;
+  color: darkgray;
+  font-size: 13px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 8px;
+}
+
+.past-activity .color-line {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: green;
+  height: 24px;
+  width: 4px;
+  border-radius: 2px;
+  float: right;
 }
 
 /* COLOR LOGIC */
