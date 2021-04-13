@@ -6,7 +6,7 @@ var form = document.querySelector(".inner-activity-container")
 var startActivityButton = form.querySelector("#start-activity-button")
 var logActivityButton = document.querySelector('#log-activity-button')
 var createNewActivityButton = document.querySelector('#create-new-activity-button')
-var startTimer = document.querySelector('#start-timer')
+var stopWatch = document.querySelector('#start-timer')
 
 // elements that toggle hidden
 var mainPage = document.querySelector('.main-page')
@@ -30,7 +30,7 @@ exerciseButton.addEventListener("click", setPageRed)
 startActivityButton.addEventListener("click", renderErrorMessages)
 startActivityButton.addEventListener("click", submitForm)
 
-startTimer.addEventListener('click', beginTimer)
+stopWatch.addEventListener('click', beginTimer)
 
 createNewActivityButton.addEventListener("click", displayNewActivityForm)
 
@@ -93,19 +93,20 @@ function displayActivityTimerModal() {
 }
 
 function beginTimer(){
-  if(startTimer.classList.contains('clicked')) return
-  startTimer.classList.add('clicked')
-  spinTimer(startTimer)
-  var timer = document.querySelector('.activity-time-display')
-  
-  var updateClock = setInterval(function () { 
+  if(stopWatch.classList.contains('clicked')) return
+  stopWatch.classList.add('clicked')
+  var timeDisplay = document.querySelector('.activity-time-display')
+
+  updateClock = setInterval(function () { 
     currentActivity.countdown()
     if (currentActivity.isCompleted()){
       clearInterval(updateClock)
-      endTimer(startTimer)
+      endTimer(stopWatch)
     }
-    timer.innerText = stringifyTime(currentActivity.minutesRemaining, currentActivity.secondsRemaining)
+    timeDisplay.innerText = stringifyTime(currentActivity.minutesRemaining, currentActivity.secondsRemaining)
   }, 1000);
+
+  spinTimer(stopWatch)
 }
 
 function stringifyTime(minutes, seconds) {
@@ -116,12 +117,22 @@ function stringifyTime(minutes, seconds) {
 
 function spinTimer(timer){
   timer.classList.add('spinning-loader')
-  timer.innerText = ('')
+  timer.innerText = ('PAUSE')
+  timer.addEventListener('click', pauseTimer)
+}
+
+function pauseTimer() {
+  stopWatch.classList.remove('spinning-loader')
+  stopWatch.classList.remove('clicked')
+  stopWatch.innerText = ('START')
+  clearInterval(updateClock)
 }
 
 function endTimer(timer){
   timer.classList.remove('spinning-loader')
+  timer.classList.add('clicked')
   timer.innerText = ('COMPLETE!')
+  stopWatch.removeEventListener('click', pauseTimer)
   
   logActivityButton.addEventListener('click', recordActivity)
   logActivityButton.classList.remove('hidden')
@@ -175,8 +186,8 @@ function renderPastActivities() {
 }
 
 function resetTimer(){
-  startTimer.innerText = 'START'
-  startTimer.classList.remove('clicked')
+  stopWatch.innerText = 'START'
+  stopWatch.classList.remove('clicked')
   logActivityButton.classList.add('hidden')
 }
 

@@ -149,6 +149,7 @@ margin: 10px 0 0 0;
 
 #start-timer {
   border-radius: 50%;
+  position: relative;
   height: 250px;
   width: 250px;
   margin: 10%;
