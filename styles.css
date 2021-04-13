@@ -143,6 +143,7 @@ margin: 10px 0 0 0;
 
 .activity-timer .activity-time-display {
   line-height: 72px;
+  font-weight: bold;
   font-size: 96px;
 }
 
