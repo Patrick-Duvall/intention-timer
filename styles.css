@@ -1,0 +1,342 @@
+body {
+  background-color: #636363;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hidden {
+  display: none!important;
+}
+
+.header h1 {
+  text-align: center;
+  padding: 10px 0;
+  display: block;
+}
+
+.main-page {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 3px;
+  height: 92vh;
+  margin: -10px;
+}
+
+.modal {
+  font-size: large;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #1e292a;
+}
+
+.modal h1 {
+  padding-left: 5%;
+  color: darkgray;
+  font-size: 28px;
+}
+
+/* NEW activity modal */
+
+.type-buttons {
+  display: flex;
+}
+
+.activity-form h1 {
+  margin: 18px 0 9px 0;
+}
+
+.inner-activity-container{
+  background-color: #636363;
+  width: 90%;
+  margin: auto;
+  height: 85%;
+  border-radius: 3px;
+  align-content: center;
+}
+
+.centered-div {
+  margin: 10px auto 0px;
+  overflow:auto;
+  padding: 30px 0;
+  width: 80%;
+}
+
+.button-image {
+  height: 16px;
+  width: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.inner-activity-container  button {
+  padding: 10px 25px;
+  margin: 60px 7%;
+  width: 120px;
+  border: white solid 3px;
+  background-color: #636363;
+  color: white;
+  border-radius: 3px;
+}
+
+#study-button {
+  margin-left: 0;
+}
+
+.inner-activity-container input {
+  background-color: #636363;
+  border: 0;
+  font-size: large;
+  color: rgb(168, 159, 159);
+  padding: 28px 0 0 0;
+  border-bottom: 1px white solid;
+}
+
+.error-message {
+  font-size: small;
+}
+
+.buttons-error-message {
+  font-size: small;
+}
+
+.inline-form-element {
+  display: inline-block;
+  width: 48%;
+  margin: 10% 0 5%;
+}
+
+.short-input {
+  width: 80%;
+}
+
+.goal-statement {
+  padding: 10% 0;
+}
+
+#activity-description {
+  width: 87%;
+}
+
+#start-activity-button {
+  padding: 5px 20px;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  width: 180px;
+  float: right;
+  margin: 12% 13% 0 0;
+}
+
+/* Current Activity Modal */
+
+.activity-timer {
+  text-align: center;
+}
+
+.activity-timer h2 {
+margin: 10px 0 0 0;
+}
+
+.activity-timer h1 {
+  margin: 18px 0 0 0;
+  text-align: left;
+}
+
+.activity-timer .activity-time-display {
+  line-height: 72px;
+  font-weight: bold;
+  font-size: 96px;
+}
+
+#start-timer {
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  margin: 10%;
+  font-size: x-large;
+  margin: 12% auto;
+  display: block;
+}
+
+#start-timer:focus {
+    outline: none;
+}
+
+#log-activity-button {
+  padding: 5px 30px;
+  background-color: white;
+  color: black;
+  border-radius: 3px;
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+
+/* Completed activity modal */
+
+
+#create-new-activity-button {
+  padding: 5px 30px;
+  background-color: white;
+  color: black;
+  width: 320px;
+  margin: 15% auto;
+  display: block;
+}
+
+/* PAST Activities section */
+
+.past-activities-container {
+  background-color: #1e292a;
+  color: darkgray;
+}
+
+.past-activities-container h1 {
+  padding-left: 30px;
+  color: darkgray;
+  font-size: 28px;
+}
+
+.past-activities-container p {
+  text-align: center;
+}
+
+.past-activity{
+  width: 90%;
+  position: relative;
+  margin: 0 auto 12px;
+  text-align: left;
+  background-color: #636363;
+  color: white;
+  border-radius: 3px;
+}
+
+.past-activity h5 {
+  margin: 0;
+  padding: 8px 8px 0 8px;
+  font-size: 16px;
+}
+
+.past-activity h6 {
+  font-weight: lighter;
+  margin: 0;
+  padding: 0 8px 0;
+  font-size: 16px;
+}
+
+.past-activity p {
+  text-align: left;
+  color: darkgray;
+  font-size: 13px;
+  font-weight: lighter;
+  margin: 0;
+  padding: 8px;
+}
+
+.past-activity .color-line {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  height: 24px;
+  width: 4px;
+  border-radius: 2px;
+  float: right;
+}
+
+.Study .color-line{
+  background-color: rgb(134, 180, 64)!important;
+}
+
+.Meditate .color-line{
+  background-color :rgb(152, 107, 173)!important;
+}
+
+.Exercise .color-line{
+  background-color: rgb(180, 101, 64)!important;
+}
+
+/* COLOR LOGIC */
+.green #study-button {
+  color: rgb(134, 180, 64)!important;
+  border-color: rgb(134, 180, 64)!important;
+}
+.green #study-button .button-image {
+  filter: invert(61%) sepia(8%) saturate(3188%) hue-rotate(42deg) brightness(108%) contrast(77%) 
+}
+.green .error-message {
+  color: rgb(134, 180, 64)!important;
+}
+.green .buttons-error-message {
+  color: rgb(134, 180, 64)!important;
+}
+.green #start-timer {
+  border: solid 5px rgb(134, 180, 64);
+}
+
+.green .spinning-loader {
+  border-left-color: rgb(134, 180, 64, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
+
+.red  #exercise-button{
+  color: rgb(180, 101, 64)!important;
+  border-color: rgb(180, 101, 64)!important;
+}
+.red #exercise-button .button-image {
+  filter: invert(59%) sepia(15%) saturate(5795%) hue-rotate(336deg) brightness(78%) contrast(74%)
+}
+.red .error-message {
+  color: rgb(180, 101, 64)!important;
+}
+.red .buttons-error-message {
+  color: rgb(180, 101, 64)!important;
+}
+
+.red #start-timer {
+  border: solid 5px rgb(180, 101, 64);
+}
+
+.red .spinning-loader {
+  border-left-color: rgb(180, 101, 64, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
+
+
+.purple #meditate-button {
+  color: rgb(152, 107, 173)!important;
+  border-color: rgb(152, 107, 173)!important;
+}
+.purple #meditate-button .button-image {
+  filter: invert(52%) sepia(13%) saturate(1485%) hue-rotate(237deg) brightness(88%) contrast(89%)
+}
+.purple .error-message {
+  color: rgb(152, 107, 173)!important;
+}
+.purple .buttons-error-message {
+  color: rgb(152, 107, 173)!important;
+}
+
+.purple #start-timer {
+  border: solid 5px  rgb(152, 107, 173)
+}
+
+.purple .spinning-loader {
+  border-left-color: rgb(152, 107, 173, .1)!important;
+  animation: rotate-s-loader 1s linear infinite;
+}
+
+@keyframes rotate-s-loader {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* remove number spinners */
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
